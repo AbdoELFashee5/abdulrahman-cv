@@ -33,7 +33,6 @@
       overflow-x: hidden;
     }
 
-    /* ── NOISE TEXTURE ── */
     body::before {
       content: '';
       position: fixed;
@@ -43,7 +42,6 @@
       z-index: 0;
     }
 
-    /* ── GRADIENT ORBS ── */
     .orb {
       position: fixed;
       border-radius: 50%;
@@ -70,7 +68,6 @@
       backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
     }
-
     .nav-logo {
       font-family: 'Space Grotesk', sans-serif;
       font-weight: 700;
@@ -80,7 +77,6 @@
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
-
     .nav-links { display: flex; gap: 2rem; list-style: none; }
     .nav-links a {
       color: var(--muted);
@@ -99,11 +95,17 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      text-align: center;
       padding: 8rem 2rem 4rem;
     }
 
-    .hero-inner { max-width: 800px; }
+    .hero-inner {
+      max-width: 1100px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 4rem;
+      align-items: center;
+    }
 
     .hero-badge {
       display: inline-flex;
@@ -120,7 +122,6 @@
       letter-spacing: 0.05em;
       text-transform: uppercase;
     }
-
     .hero-badge::before {
       content: '';
       width: 6px;
@@ -129,7 +130,6 @@
       background: var(--accent2);
       animation: pulse 2s infinite;
     }
-
     @keyframes pulse {
       0%, 100% { opacity: 1; transform: scale(1); }
       50% { opacity: 0.5; transform: scale(1.3); }
@@ -137,42 +137,36 @@
 
     h1 {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-size: clamp(2.5rem, 5vw, 4rem);
       font-weight: 700;
       line-height: 1.1;
       margin-bottom: 0.5rem;
       letter-spacing: -0.02em;
     }
-
     .gradient-text {
       background: linear-gradient(135deg, #fff 0%, var(--accent) 50%, var(--accent2) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
-
     .hero-title {
-      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      font-size: 1.1rem;
       color: var(--muted);
       font-weight: 400;
       margin-bottom: 1.5rem;
     }
-
     .hero-summary {
-      font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+      font-size: 0.95rem;
       color: var(--muted);
-      max-width: 640px;
-      margin: 0 auto 2.5rem;
+      max-width: 560px;
+      margin-bottom: 2rem;
       line-height: 1.8;
     }
-
     .hero-cta {
       display: flex;
       gap: 1rem;
-      justify-content: center;
       flex-wrap: wrap;
     }
-
     .btn {
       display: inline-flex;
       align-items: center;
@@ -186,14 +180,12 @@
       cursor: pointer;
       border: none;
     }
-
     .btn-primary {
       background: linear-gradient(135deg, var(--accent), #8b5cf6);
       color: #fff;
       box-shadow: 0 0 30px rgba(108, 99, 255, 0.3);
     }
     .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 40px rgba(108, 99, 255, 0.5); }
-
     .btn-ghost {
       background: transparent;
       color: var(--text);
@@ -203,21 +195,51 @@
 
     .hero-contact {
       display: flex;
-      justify-content: center;
-      gap: 2rem;
-      margin-top: 3rem;
+      gap: 1.5rem;
+      margin-top: 2rem;
       flex-wrap: wrap;
     }
-
     .contact-item {
       display: flex;
       align-items: center;
       gap: 0.5rem;
       color: var(--muted);
-      font-size: 0.875rem;
+      font-size: 0.8rem;
     }
+    .contact-item svg { width: 14px; height: 14px; flex-shrink: 0; }
 
-    .contact-item svg { width: 16px; height: 16px; }
+    /* ── PHOTO ── */
+    .hero-photo-wrap {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+    .hero-photo-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -20px;
+      background: radial-gradient(ellipse at center, rgba(108,99,255,0.2) 0%, transparent 70%);
+      border-radius: 50%;
+      z-index: 0;
+    }
+    .hero-photo {
+      position: relative;
+      z-index: 1;
+      width: 320px;
+      height: 420px;
+      object-fit: cover;
+      object-position: top center;
+      border-radius: 24px;
+      border: 1px solid rgba(108,99,255,0.2);
+      filter: drop-shadow(0 30px 60px rgba(108,99,255,0.15));
+    }
+    .photo-ring {
+      position: absolute;
+      inset: -12px;
+      border-radius: 30px;
+      border: 1px solid rgba(108,99,255,0.15);
+      z-index: 0;
+    }
 
     /* ── SECTION ── */
     section {
@@ -225,9 +247,7 @@
       z-index: 1;
       padding: 5rem 2rem;
     }
-
     .container { max-width: 1000px; margin: 0 auto; }
-
     .section-label {
       display: inline-block;
       font-size: 0.75rem;
@@ -237,7 +257,6 @@
       color: var(--accent2);
       margin-bottom: 0.5rem;
     }
-
     .section-title {
       font-family: 'Space Grotesk', sans-serif;
       font-size: clamp(1.75rem, 3vw, 2.25rem);
@@ -245,7 +264,6 @@
       margin-bottom: 1rem;
       letter-spacing: -0.02em;
     }
-
     .section-divider {
       width: 48px;
       height: 3px;
@@ -254,13 +272,42 @@
       margin-bottom: 3rem;
     }
 
-    /* ── EXPERTISE GRID ── */
+    /* ── STATS ── */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1rem;
+      margin-bottom: 0;
+    }
+    .stat-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      text-align: center;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s;
+    }
+    .stat-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .stat-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.25rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      margin-bottom: 0.25rem;
+    }
+    .stat-label { font-size: 0.78rem; color: var(--muted); font-weight: 500; }
+
+    /* ── EXPERTISE ── */
     .expertise-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 1.25rem;
     }
-
     .expertise-card {
       background: var(--card-bg);
       border: 1px solid var(--border);
@@ -269,39 +316,22 @@
       transition: all 0.3s;
       backdrop-filter: blur(10px);
     }
-
     .expertise-card:hover {
       border-color: var(--accent);
       transform: translateY(-4px);
       box-shadow: 0 20px 40px rgba(108, 99, 255, 0.1);
     }
+    .expertise-icon { font-size: 1.75rem; margin-bottom: 0.75rem; }
+    .expertise-card h3 { font-size: 0.9rem; font-weight: 600; color: var(--text); margin-bottom: 0.5rem; }
+    .expertise-card p { font-size: 0.8rem; color: var(--muted); line-height: 1.6; }
 
-    .expertise-icon {
-      font-size: 1.75rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .expertise-card h3 {
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--text);
-      margin-bottom: 0.5rem;
-    }
-
-    .expertise-card p {
-      font-size: 0.8rem;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    /* ── PHASE SYSTEM ── */
+    /* ── 7-PHASE ── */
     .phases {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
       gap: 1rem;
       margin-top: 2rem;
     }
-
     .phase {
       background: var(--card-bg);
       border: 1px solid var(--border);
@@ -312,35 +342,152 @@
       position: relative;
       overflow: hidden;
     }
-
     .phase::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
+      top: 0; left: 0; right: 0;
       height: 2px;
       background: linear-gradient(90deg, var(--accent), var(--accent2));
       transform: scaleX(0);
       transition: transform 0.3s;
     }
-
     .phase:hover::before { transform: scaleX(1); }
     .phase:hover { transform: translateY(-3px); border-color: rgba(108, 99, 255, 0.3); }
+    .phase-num { font-size: 0.7rem; font-weight: 700; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; }
+    .phase h4 { font-size: 0.85rem; font-weight: 600; color: var(--text); margin-top: 0.25rem; }
 
-    .phase-num {
-      font-size: 0.7rem;
-      font-weight: 700;
-      color: var(--accent);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
+    /* ── TIMELINE ── */
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
     }
-
-    .phase h4 {
-      font-size: 0.85rem;
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      bottom: 8px;
+      width: 2px;
+      background: linear-gradient(180deg, var(--accent), var(--accent2), transparent);
+      border-radius: 2px;
+    }
+    .timeline-item {
+      position: relative;
+      padding-bottom: 3rem;
+    }
+    .timeline-item:last-child { padding-bottom: 0; }
+    .timeline-dot {
+      position: absolute;
+      left: -2.4rem;
+      top: 4px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      border: 2px solid var(--bg);
+      box-shadow: 0 0 12px rgba(108,99,255,0.5);
+    }
+    .timeline-period {
+      display: inline-block;
+      background: rgba(108,99,255,0.1);
+      border: 1px solid rgba(108,99,255,0.25);
+      color: var(--accent);
+      font-size: 0.75rem;
       font-weight: 600;
+      padding: 0.25rem 0.75rem;
+      border-radius: 100px;
+      margin-bottom: 0.75rem;
+      letter-spacing: 0.04em;
+    }
+    .timeline-role {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
       color: var(--text);
-      margin-top: 0.25rem;
+      margin-bottom: 0.25rem;
+    }
+    .timeline-org {
+      font-size: 0.85rem;
+      color: var(--accent2);
+      font-weight: 500;
+      margin-bottom: 0.75rem;
+    }
+    .timeline-desc {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.75;
+      max-width: 700px;
+    }
+    .timeline-desc li {
+      display: flex;
+      gap: 0.6rem;
+      margin-bottom: 0.4rem;
+    }
+    .timeline-desc li::before { content: '→'; color: var(--accent); flex-shrink: 0; font-weight: 700; }
+
+    /* ── IMPACT / RESEARCH ── */
+    .research-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+    .research-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s;
+    }
+    .research-card:hover { border-color: rgba(108,99,255,0.4); transform: translateY(-3px); }
+    .research-card h3 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .research-stat {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.75rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.25rem;
+    }
+    .research-card p {
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .source-tag {
+      display: inline-block;
+      margin-top: 0.75rem;
+      font-size: 0.7rem;
+      color: var(--muted);
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+    }
+    .sources-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 2rem;
+    }
+    .source-pill {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.72rem;
+      font-weight: 500;
+      padding: 0.3rem 0.7rem;
+      border-radius: 100px;
     }
 
     /* ── EXPERIENCE ── */
@@ -354,7 +501,6 @@
       position: relative;
       overflow: hidden;
     }
-
     .experience-card::after {
       content: '';
       position: absolute;
@@ -362,9 +508,7 @@
       background: linear-gradient(135deg, rgba(108,99,255,0.03), rgba(0,212,170,0.03));
       pointer-events: none;
     }
-
     .experience-card:hover { border-color: rgba(108,99,255,0.4); transform: translateY(-3px); }
-
     .exp-header {
       display: flex;
       justify-content: space-between;
@@ -373,20 +517,13 @@
       gap: 1rem;
       margin-bottom: 1.5rem;
     }
-
     .exp-role {
       font-family: 'Space Grotesk', sans-serif;
       font-size: 1.2rem;
       font-weight: 700;
       color: var(--text);
     }
-
-    .exp-company {
-      color: var(--muted);
-      font-size: 0.9rem;
-      margin-top: 0.25rem;
-    }
-
+    .exp-company { color: var(--muted); font-size: 0.9rem; margin-top: 0.25rem; }
     .exp-badge {
       background: rgba(0, 212, 170, 0.1);
       border: 1px solid rgba(0, 212, 170, 0.3);
@@ -397,14 +534,7 @@
       font-weight: 600;
       white-space: nowrap;
     }
-
-    .exp-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-
+    .exp-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
     .exp-list li {
       display: flex;
       gap: 0.75rem;
@@ -412,18 +542,10 @@
       color: var(--muted);
       line-height: 1.6;
     }
-
-    .exp-list li::before {
-      content: '→';
-      color: var(--accent);
-      font-weight: 700;
-      flex-shrink: 0;
-      margin-top: 0.1rem;
-    }
+    .exp-list li::before { content: '→'; color: var(--accent); font-weight: 700; flex-shrink: 0; margin-top: 0.1rem; }
 
     /* ── CERTIFICATIONS ── */
     .cert-categories { display: flex; flex-direction: column; gap: 2rem; }
-
     .cert-category h3 {
       font-size: 0.8rem;
       font-weight: 600;
@@ -435,72 +557,48 @@
       align-items: center;
       gap: 0.5rem;
     }
-
-    .cert-category h3::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--border);
-    }
-
-    .cert-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-    }
-
+    .cert-category h3::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+    .cert-tags { display: flex; flex-wrap: wrap; gap: 0.75rem; }
     .cert-tag {
       background: var(--surface2);
       border: 1px solid var(--border);
-      color: var(--muted);
-      padding: 0.4rem 0.9rem;
-      border-radius: 8px;
-      font-size: 0.8rem;
-      font-weight: 500;
-      transition: all 0.2s;
+      border-radius: 10px;
+      padding: 0.6rem 1rem;
       text-decoration: none;
-      display: inline-block;
+      transition: all 0.2s;
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
     }
-
     .cert-tag:hover {
       border-color: var(--accent);
-      color: var(--text);
       background: rgba(108, 99, 255, 0.08);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(108,99,255,0.12);
     }
-
-    /* ── STATS ── */
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 1rem;
-      margin-bottom: 4rem;
+    .cert-name {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text);
     }
-
-    .stat-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 1.5rem;
-      text-align: center;
-      backdrop-filter: blur(10px);
-      transition: all 0.3s;
+    .cert-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
-
-    .stat-card:hover { border-color: var(--accent); transform: translateY(-3px); }
-
-    .stat-num {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 2.25rem;
-      font-weight: 700;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      line-height: 1;
-      margin-bottom: 0.25rem;
+    .cert-issuer {
+      font-size: 0.7rem;
+      color: var(--accent2);
+      font-weight: 500;
     }
-
-    .stat-label { font-size: 0.8rem; color: var(--muted); font-weight: 500; }
+    .cert-verify {
+      font-size: 0.65rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 0.2rem;
+    }
+    .cert-verify svg { width: 10px; height: 10px; }
 
     /* ── FOOTER ── */
     footer {
@@ -510,28 +608,24 @@
       padding: 2rem;
       text-align: center;
     }
-
-    footer p {
-      color: var(--muted);
-      font-size: 0.8rem;
-    }
-
+    footer p { color: var(--muted); font-size: 0.8rem; }
     footer a { color: var(--accent); text-decoration: none; }
 
-    /* ── SCROLL REVEAL ── */
+    /* ── REVEAL ── */
     .reveal {
       opacity: 0;
       transform: translateY(30px);
       transition: opacity 0.6s ease, transform 0.6s ease;
     }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
 
     /* ── RESPONSIVE ── */
-    @media (max-width: 640px) {
-      nav { padding: 1rem; }
+    @media (max-width: 768px) {
+      .hero-inner { grid-template-columns: 1fr; text-align: center; }
+      .hero-photo-wrap { order: -1; }
+      .hero-photo { width: 220px; height: 290px; }
+      .hero-contact { justify-content: center; }
+      .hero-cta { justify-content: center; }
       .nav-links { display: none; }
       section { padding: 3rem 1.25rem; }
       .phases { grid-template-columns: repeat(2, 1fr); }
@@ -548,9 +642,10 @@
   <nav>
     <span class="nav-logo">Abdulrahman El Sayed</span>
     <ul class="nav-links">
-      <li><a href="#about">About</a></li>
+      <li><a href="#about">Impact</a></li>
       <li><a href="#expertise">Expertise</a></li>
-      <li><a href="#experience">Experience</a></li>
+      <li><a href="#timeline">Journey</a></li>
+      <li><a href="#research">Research</a></li>
       <li><a href="#certifications">Certifications</a></li>
     </ul>
   </nav>
@@ -558,54 +653,69 @@
   <!-- HERO -->
   <section id="hero">
     <div class="hero-inner">
-      <div class="hero-badge">Available for Opportunities</div>
-      <h1>
-        <span class="gradient-text">Abdulrahman</span><br />El Sayed
-      </h1>
-      <p class="hero-title">AI Integration Specialist for White-Collar Work</p>
-      <p class="hero-summary">
-        Specialized in integrating Artificial Intelligence into real-world business workflows.
-        Creator of a structured 7-phase AI integration system that improves operational efficiency,
-        reduces manual work, and enhances output quality — no coding required.
-      </p>
-      <div class="hero-cta">
-        <a href="#experience" class="btn btn-primary">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><line x1="16" y1="21" x2="16" y2="7"/><line x1="8" y1="21" x2="8" y2="7"/></svg>
-          View Experience
-        </a>
-        <a href="mailto:mr.abdulrahman.elsayed@gail.com" class="btn btn-ghost">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          Get In Touch
-        </a>
+      <div>
+        <div class="hero-badge">Available for Opportunities</div>
+        <h1>
+          <span class="gradient-text">Abdulrahman</span><br />El Sayed
+        </h1>
+        <p class="hero-title">AI Integration Specialist for White-Collar Work</p>
+        <p class="hero-summary">
+          Specialized in integrating AI into real-world business workflows. Creator of the
+          proprietary 7-phase AI integration system — backed by McKinsey, Goldman Sachs, MIT,
+          Stanford, and Harvard research. Helped 500+ professionals save 10–20 hours/week
+          and earn 10–30% more.
+        </p>
+        <div class="hero-cta">
+          <a href="#timeline" class="btn btn-primary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            My Journey
+          </a>
+          <a href="mailto:mr.abdulrahman.elsayed@gail.com" class="btn btn-ghost">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            Get In Touch
+          </a>
+        </div>
+        <div class="hero-contact">
+          <span class="contact-item">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+            01091225373
+          </span>
+          <span class="contact-item">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            mr.abdulrahman.elsayed@gail.com
+          </span>
+        </div>
       </div>
-      <div class="hero-contact">
-        <span class="contact-item">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-          01091225373
-        </span>
-        <span class="contact-item">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-          mr.abdulrahman.elsayed@gail.com
-        </span>
+      <div class="hero-photo-wrap">
+        <div class="photo-ring"></div>
+        <img src="photo.png" alt="Abdulrahman El Sayed" class="hero-photo" />
       </div>
     </div>
   </section>
 
-  <!-- STATS -->
+  <!-- IMPACT STATS -->
   <section id="about">
     <div class="container reveal">
       <div class="stats-grid">
         <div class="stat-card">
+          <div class="stat-num">500+</div>
+          <div class="stat-label">Professionals Trained</div>
+        </div>
+        <div class="stat-card">
           <div class="stat-num">7</div>
-          <div class="stat-label">Phase AI System</div>
+          <div class="stat-label">Phase Proprietary System</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">10–20h</div>
+          <div class="stat-label">Saved per Week per Pro</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">30%</div>
+          <div class="stat-label">Avg Income Increase</div>
         </div>
         <div class="stat-card">
           <div class="stat-num">13+</div>
           <div class="stat-label">Certifications</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">4</div>
-          <div class="stat-label">Specialization Areas</div>
         </div>
         <div class="stat-card">
           <div class="stat-num">0</div>
@@ -626,7 +736,7 @@
         <div class="expertise-card">
           <div class="expertise-icon">⚙️</div>
           <h3>Workflow Optimization</h3>
-          <p>AI Integration into Business Workflows and No-Code AI Systems that actually work in practice.</p>
+          <p>AI Integration into Business Workflows and No-Code AI Systems that work in real daily practice.</p>
         </div>
         <div class="expertise-card">
           <div class="expertise-icon">🧠</div>
@@ -636,7 +746,7 @@
         <div class="expertise-card">
           <div class="expertise-icon">🔧</div>
           <h3>Prompt Engineering</h3>
-          <p>Advanced Prompt Engineering & AI Optimization to get the most out of any AI tool.</p>
+          <p>Advanced Prompt Engineering & AI Optimization to extract maximum value from any AI tool.</p>
         </div>
         <div class="expertise-card">
           <div class="expertise-icon">📊</div>
@@ -645,13 +755,12 @@
         </div>
       </div>
 
-      <!-- 7-Phase System -->
       <div style="margin-top: 4rem;">
         <span class="section-label reveal">Proprietary Method</span>
         <h2 class="section-title reveal">The 7-Phase AI Integration System</h2>
         <div class="section-divider reveal"></div>
         <p style="color: var(--muted); margin-bottom: 1.5rem; max-width: 600px;" class="reveal">
-          A structured framework covering the complete business workflow cycle — designed for white-collar professionals without any technical background.
+          A structured framework covering the complete business workflow cycle — designed for white-collar professionals with zero technical background required.
         </p>
         <div class="phases reveal">
           <div class="phase"><div class="phase-num">Phase 1</div><h4>Data Input</h4></div>
@@ -666,26 +775,146 @@
     </div>
   </section>
 
+  <!-- TIMELINE -->
+  <section id="timeline">
+    <div class="container">
+      <span class="section-label reveal">Career Journey</span>
+      <h2 class="section-title reveal">From Classroom to Global Impact</h2>
+      <div class="section-divider reveal"></div>
+
+      <div class="timeline reveal">
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-period">May 2023 – Aug 2023</div>
+          <div class="timeline-role">AI Education — Teaching Teenagers</div>
+          <div class="timeline-org">Independent Instructor</div>
+          <ul class="timeline-desc">
+            <li>Taught teenagers how to understand and use AI tools in practical, real-world contexts.</li>
+            <li>Built foundational curriculum making AI accessible to younger audiences with no prior background.</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-period">Aug 2023 – Dec 2023</div>
+          <div class="timeline-role">In-Person Workshops — Executives & White-Collar Professionals</div>
+          <div class="timeline-org">Corporate Workshops</div>
+          <ul class="timeline-desc">
+            <li>Delivered hands-on AI workshops to executives and white-collar workers in person.</li>
+            <li>Focused on practical AI application within existing business roles and daily workflows.</li>
+            <li>Identified core patterns in how professionals learn and apply AI — the foundation for the 7-phase system.</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-period">Jan 2024 – Dec 2025</div>
+          <div class="timeline-role">Founder & CEO — Eduvance</div>
+          <div class="timeline-org">Eduvance · Online Platform · Serving US Professionals</div>
+          <ul class="timeline-desc">
+            <li>Founded and launched Eduvance — an online platform teaching white-collar professionals across America how to integrate no-code AI tools into their daily workflow.</li>
+            <li>Developed the proprietary 7-phase AI Integration Formula, validated by research from McKinsey, Goldman Sachs, MIT, Stanford, Harvard Business Review, IBM, Microsoft, PwC, Deloitte, and 10+ leading institutions.</li>
+            <li>Trained 500+ professionals, helping them save an average of 10–20 hours per week.</li>
+            <li>Students achieved an average income increase of 10–30% within months of completing the program.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- RESEARCH BACKING -->
+  <section id="research">
+    <div class="container">
+      <span class="section-label reveal">Data-Backed Results</span>
+      <h2 class="section-title reveal">Why This Works — The Research</h2>
+      <div class="section-divider reveal"></div>
+      <p style="color: var(--muted); max-width: 650px; margin-bottom: 2.5rem; font-size:0.9rem; line-height:1.8;" class="reveal">
+        The 7-phase system is backed by undeniable data from the world's leading research institutions. Every outcome promised is grounded in peer-reviewed studies and global industry reports.
+      </p>
+
+      <div class="research-grid reveal">
+        <div class="research-card">
+          <h3>💰 Boost Your Income</h3>
+          <div class="research-stat">10–30%</div>
+          <p>AI-fluent professionals earn significantly more. Side income through AI-assisted freelancing can add 2,000–5,000 USD/month.</p>
+          <span class="source-tag">McKinsey · Goldman Sachs</span>
+        </div>
+        <div class="research-card">
+          <h3>⏱ Save Time, Work Smarter</h3>
+          <div class="research-stat">10–20 hrs/wk</div>
+          <p>Automate repetitive tasks like data entry, report generation, and email drafting. ChatGPT and Copilot cut task time by 40%.</p>
+          <span class="source-tag">Goldman Sachs · OpenAI · Microsoft</span>
+        </div>
+        <div class="research-card">
+          <h3>🔒 Secure Your Career</h3>
+          <div class="research-stat">93%</div>
+          <p>of companies prioritize hiring AI-fluent professionals. 80% of white-collar workers say AI skills are critical for career growth.</p>
+          <span class="source-tag">McKinsey · Deloitte</span>
+        </div>
+        <div class="research-card">
+          <h3>📈 Proven Global Results</h3>
+          <div class="research-stat">$15.7T</div>
+          <p>AI is driving $15.7 trillion in global economic growth by 2030. 70% of Fortune 500 companies report 20% cost savings from AI.</p>
+          <span class="source-tag">PwC · OpenAI · Salesforce</span>
+        </div>
+        <div class="research-card">
+          <h3>🚀 Faster Career Growth</h3>
+          <div class="research-stat">50%</div>
+          <p>Faster career progression. AI-trained professionals advance 15–25% faster through the ranks than their peers.</p>
+          <span class="source-tag">IBM · Harvard Business Review</span>
+        </div>
+        <div class="research-card">
+          <h3>🏢 Enterprise Adoption</h3>
+          <div class="research-stat">70%</div>
+          <p>of Fortune 500 companies use AI tools like ChatGPT, reporting 35% productivity boosts across departments.</p>
+          <span class="source-tag">OpenAI · Stanford · MIT</span>
+        </div>
+      </div>
+
+      <div class="sources-list reveal">
+        <span class="source-pill">McKinsey</span>
+        <span class="source-pill">Goldman Sachs</span>
+        <span class="source-pill">OpenAI</span>
+        <span class="source-pill">MIT</span>
+        <span class="source-pill">Stanford</span>
+        <span class="source-pill">Harvard Business Review</span>
+        <span class="source-pill">Deloitte</span>
+        <span class="source-pill">PwC</span>
+        <span class="source-pill">IBM</span>
+        <span class="source-pill">Microsoft</span>
+        <span class="source-pill">Nature</span>
+        <span class="source-pill">Forbes</span>
+        <span class="source-pill">World Economic Forum</span>
+        <span class="source-pill">Gartner</span>
+        <span class="source-pill">BCG</span>
+        <span class="source-pill">Oxford Economics</span>
+        <span class="source-pill">NBER</span>
+      </div>
+    </div>
+  </section>
+
   <!-- EXPERIENCE -->
   <section id="experience">
     <div class="container">
-      <span class="section-label reveal">Career</span>
-      <h2 class="section-title reveal">Professional Experience</h2>
+      <span class="section-label reveal">Professional Experience</span>
+      <h2 class="section-title reveal">Course Creator & Instructor</h2>
       <div class="section-divider reveal"></div>
 
       <div class="experience-card reveal">
         <div class="exp-header">
           <div>
             <div class="exp-role">AI Integration Course Creator & Instructor</div>
-            <div class="exp-company">Freelance / Independent</div>
+            <div class="exp-company">Freelance / Independent · Eduvance</div>
           </div>
-          <span class="exp-badge">Present</span>
+          <span class="exp-badge">2023 – Present</span>
         </div>
         <ul class="exp-list">
           <li>Designed and launched a comprehensive AI integration program specifically tailored for white-collar professionals.</li>
           <li>Built and implemented the proprietary 7-phase system covering practical business workflows across the full operational cycle.</li>
           <li>Focused curriculum entirely on practical, real-world implementation rather than abstract theory.</li>
-          <li>Taught professionals hands-on techniques to seamlessly integrate AI into their daily operational tasks, resulting in increased efficiency, speed, and accuracy.</li>
+          <li>Taught 500+ professionals hands-on techniques, achieving 10–20 hrs/week saved and 10–30% income growth on average.</li>
         </ul>
       </div>
     </div>
@@ -702,37 +931,115 @@
         <div class="cert-category">
           <h3>Generative AI & Systems</h3>
           <div class="cert-tags">
-            <a class="cert-tag" href="https://coursera.org/share/d74d32a4568f9577cada5065e3108fdb" target="_blank" rel="noopener">Generative AI for Data Scientists</a>
-            <a class="cert-tag" href="https://coursera.org/share/ce5edbd7ab8d58d1ef76d67cb3e28754" target="_blank" rel="noopener">Generative AI for Product Managers</a>
-            <a class="cert-tag" href="https://coursera.org/share/61a530e089ce776cec1811381b8db309" target="_blank" rel="noopener">Generative AI for Educators & Teachers</a>
-            <a class="cert-tag" href="https://coursera.org/share/5eea8902788af038fea0d90a9bfa34d1" target="_blank" rel="noopener">Generative AI Automation</a>
-            <a class="cert-tag" href="https://coursera.org/share/d4088b7564aacd97aa4b434f07755f37" target="_blank" rel="noopener">Generative AI Fundamentals</a>
-            <a class="cert-tag" href="https://coursera.org/share/1749a522713649c20b625f9df5a9eb4a" target="_blank" rel="noopener">Generative AI Assistants</a>
-            <a class="cert-tag" href="https://coursera.org/share/d33b457b9a31ed0d5bc8a6da648c3b09" target="_blank" rel="noopener">IBM Generative AI for Cybersecurity Professionals</a>
+            <a class="cert-tag" href="https://coursera.org/share/d74d32a4568f9577cada5065e3108fdb" target="_blank" rel="noopener">
+              <span class="cert-name">Generative AI for Data Scientists</span>
+              <span class="cert-meta">
+                <span class="cert-issuer">IBM</span>
+                <span class="cert-verify"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Click to verify</span>
+              </span>
+            </a>
+            <a class="cert-tag" href="https://coursera.org/share/ce5edbd7ab8d58d1ef76d67cb3e28754" target="_blank" rel="noopener">
+              <span class="cert-name">Generative AI for Product Managers</span>
+              <span class="cert-meta">
+                <span class="cert-issuer">IBM</span>
+                <span class="cert-verify"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Click to verify</span>
+              </span>
+            </a>
+            <a class="cert-tag" href="https://coursera.org/share/61a530e089ce776cec1811381b8db309" target="_blank" rel="noopener">
+              <span class="cert-name">Generative AI for Educators & Teachers</span>
+              <span class="cert-meta">
+                <span class="cert-issuer">Vanderbilt University</span>
+                <span class="cert-verify"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Click to verify</span>
+              </span>
+            </a>
+            <a class="cert-tag" href="https://coursera.org/share/5eea8902788af038fea0d90a9bfa34d1" target="_blank" rel="noopener">
+              <span class="cert-name">Generative AI Automation</span>
+              <span class="cert-meta">
+                <span class="cert-issuer">Vanderbilt University</span>
+                <span class="cert-verify"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Click to verify</span>
+              </span>
+            </a>
+            <a class="cert-tag" href="https://coursera.org/share/d4088b7564aacd97aa4b434f07755f37" target="_blank" rel="noopener">
+              <span class="cert-name">Generative AI Fundamentals</span>
+              <span class="cert-meta">
+                <span class="cert-issuer">IBM</span>
+                <span class="cert-verify"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Click to verify</span>
+              </span>
+            </a>
+            <a class="cert-tag" href="https://coursera.org/share/1749a522713649c20b625f9df5a9eb4a" target="_blank" rel="noopener">
+              <span class="cert-name">Generative AI Assistants</span>
+              <span class="cert-meta">
+                <span class="cert-issuer">IBM</span>
+                <span class="cert-verify"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Click to verify</span>
+              </span>
+            </a>
+            <a class="cert-tag" href="https://coursera.org/share/d33b457b9a31ed0d5bc8a6da648c3b09" target="_blank" rel="noopener">
+              <span class="cert-name">IBM Generative AI for Cybersecurity Professionals</span>
+              <span class="cert-meta">
+                <span class="cert-issuer">IBM</span>
+                <span class="cert-verify"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Click to verify</span>
+              </span>
+            </a>
           </div>
         </div>
 
         <div class="cert-category">
           <h3>Prompt Engineering & Tools</h3>
           <div class="cert-tags">
-            <a class="cert-tag" href="https://coursera.org/share/bc1728cbf41418af3f058daa546aebc1" target="_blank" rel="noopener">Prompt Engineering</a>
-            <a class="cert-tag" href="https://coursera.org/share/ff41334c149d1dc30307e9683043c491" target="_blank" rel="noopener">Microsoft 365 Copilot for Leaders</a>
+            <a class="cert-tag" href="https://coursera.org/share/bc1728cbf41418af3f058daa546aebc1" target="_blank" rel="noopener">
+              <span class="cert-name">Prompt Engineering</span>
+              <span class="cert-meta">
+                <span class="cert-issuer">Vanderbilt University</span>
+                <span class="cert-verify"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Click to verify</span>
+              </span>
+            </a>
+            <a class="cert-tag" href="https://coursera.org/share/ff41334c149d1dc30307e9683043c491" target="_blank" rel="noopener">
+              <span class="cert-name">Microsoft 365 Copilot for Leaders</span>
+              <span class="cert-meta">
+                <span class="cert-issuer">Microsoft</span>
+                <span class="cert-verify"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Click to verify</span>
+              </span>
+            </a>
           </div>
         </div>
 
         <div class="cert-category">
           <h3>Business & Strategy</h3>
           <div class="cert-tags">
-            <a class="cert-tag" href="https://coursera.org/share/358ab1a501edefe0afeef1ba695d44b6" target="_blank" rel="noopener">AI For Business</a>
+            <a class="cert-tag" href="https://coursera.org/share/358ab1a501edefe0afeef1ba695d44b6" target="_blank" rel="noopener">
+              <span class="cert-name">AI For Business</span>
+              <span class="cert-meta">
+                <span class="cert-issuer">University of Pennsylvania</span>
+                <span class="cert-verify"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Click to verify</span>
+              </span>
+            </a>
           </div>
         </div>
 
         <div class="cert-category">
           <h3>Marketing & Leadership</h3>
           <div class="cert-tags">
-            <a class="cert-tag" href="https://coursera.org/share/537bf22eb3d73230579b1a0e27b89097" target="_blank" rel="noopener">Google Digital Marketing & E-commerce</a>
-            <a class="cert-tag" href="https://coursera.org/share/85acd666432db921321a492d98cc8328" target="_blank" rel="noopener">Leading People and Teams</a>
-            <a class="cert-tag" href="https://coursera.org/share/e958fc942b2e3ed7a2389b7e03c2e0d4" target="_blank" rel="noopener">Entrepreneurship</a>
+            <a class="cert-tag" href="https://coursera.org/share/537bf22eb3d73230579b1a0e27b89097" target="_blank" rel="noopener">
+              <span class="cert-name">Google Digital Marketing & E-commerce</span>
+              <span class="cert-meta">
+                <span class="cert-issuer">Google</span>
+                <span class="cert-verify"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Click to verify</span>
+              </span>
+            </a>
+            <a class="cert-tag" href="https://coursera.org/share/85acd666432db921321a492d98cc8328" target="_blank" rel="noopener">
+              <span class="cert-name">Leading People and Teams</span>
+              <span class="cert-meta">
+                <span class="cert-issuer">University of Michigan</span>
+                <span class="cert-verify"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Click to verify</span>
+              </span>
+            </a>
+            <a class="cert-tag" href="https://coursera.org/share/e958fc942b2e3ed7a2389b7e03c2e0d4" target="_blank" rel="noopener">
+              <span class="cert-name">Entrepreneurship</span>
+              <span class="cert-meta">
+                <span class="cert-issuer">University of Pennsylvania</span>
+                <span class="cert-verify"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Click to verify</span>
+              </span>
+            </a>
           </div>
         </div>
       </div>
@@ -741,11 +1048,10 @@
 
   <!-- FOOTER -->
   <footer>
-    <p>Built with ♥ by Abdulrahman El Sayed &nbsp;·&nbsp; <a href="mailto:mr.abdulrahman.elsayed@gail.com">mr.abdulrahman.elsayed@gail.com</a> &nbsp;·&nbsp; 01091225373</p>
+    <p>Abdulrahman El Sayed &nbsp;·&nbsp; AI Integration Specialist &nbsp;·&nbsp; <a href="mailto:mr.abdulrahman.elsayed@gail.com">mr.abdulrahman.elsayed@gail.com</a> &nbsp;·&nbsp; 01091225373</p>
   </footer>
 
   <script>
-    // Scroll reveal
     const observer = new IntersectionObserver(
       entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
       { threshold: 0.1 }
